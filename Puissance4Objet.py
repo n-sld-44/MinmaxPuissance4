@@ -74,8 +74,8 @@ class Puissance4:
                 elif grille[j][i] == grille[j+1][i+1] == grille[j+2][i+2] ==  grille[j+3][i+3] == 'O':
                     return self.o-1
                 
-        for i in range(hauteur-1,3,-1):
-            for j in range(largeur-1,3,-1):
+        for i in range(hauteur-1,2,-1):
+            for j in range(largeur-1,2,-1):
                 if grille[j][i] == grille[j-1][i-1] == grille[j-2][i-2] ==  grille[j-3][i-3] == 'X':
                     return self.x+1
                 elif grille[j][i] == grille[j-1][i-1] == grille[j-2][i-2] ==  grille[j-3][i-3] == 'O':
@@ -89,26 +89,27 @@ class Puissance4:
         
         if self.pions == largeur*hauteur or self.pions == 42:
             return True
+        
         for colonne in self.board:
             for i in range(hauteur-3):
-                if colonne[i]==colonne[i+1]==colonne[i+2]==colonne[i+3] =='X':
+                if colonne[i]==colonne[i+1]==colonne[i+2]==colonne[i+3] !='.':
                     return True
                 
         #test ligne
         for i in range(hauteur):
             for j in range(largeur-3):
-                if self.board[j][i] == self.board[j+1][i] == self.board[j+2][i] ==  self.board[j+3][i] == 'X':
+                if self.board[j][i] == self.board[j+1][i] == self.board[j+2][i] ==  self.board[j+3][i] != '.':
                     return True
         
         #test Diagonale 
         for i in range(hauteur-3):
             for j in range(largeur-3):
-                if self.board[j][i] == self.board[j+1][i+1] == self.board[j+2][i+2] ==  self.board[j+3][i+3] == 'X':
+                if self.board[j][i] == self.board[j+1][i+1] == self.board[j+2][i+2] ==  self.board[j+3][i+3] != '.':
                     return True
                 
-        for i in range(hauteur-1,2,-1):
-            for j in range(largeur-1,3,-1):
-                if self.board[j][i] == self.board[j-1][i-1] == self.board[j-2][i-2] ==  self.board[j-3][i-3] == 'X':
+        for j in range(3,hauteur):
+            for i in range(largeur-3):
+                if self.board[j][i] == self.board[j-1][i+1] == self.board[j-2][i+2] ==  self.board[j-3][i+3] != '.':
                     return True
             
         else:
