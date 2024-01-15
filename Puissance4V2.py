@@ -57,6 +57,10 @@ def terminalTest(grille, pions ):
         for j in range(largeur-3):
             if grille[i][j] == grille[i-1][j+1] == grille[i-3][j+3] == grille[i-2][j+2] != '.' :
                 return True
+    return False
+
+
+
             
 def actions(grille):
     listeaction = []
